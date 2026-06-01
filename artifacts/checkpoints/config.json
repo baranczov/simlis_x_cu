@@ -1,0 +1,55 @@
+{
+  "backbone": "resnet50",
+  "image_size": 224,
+  "num_material_classes": 6,
+  "num_fragm_classes": 2,
+  "material_classes": [
+    "глина",
+    "керамика",
+    "прочее",
+    "стекло",
+    "фарфор",
+    "фаянс"
+  ],
+  "fragm_classes": [
+    "фрагмент",
+    "целый"
+  ],
+  "mat_to_idx": {
+    "глина": 0,
+    "керамика": 1,
+    "прочее": 2,
+    "стекло": 3,
+    "фарфор": 4,
+    "фаянс": 5
+  },
+  "fragm_to_idx": {
+    "фрагмент": 0,
+    "целый": 1
+  },
+  "optimizer": "AdamW",
+  "learning_rate": 0.0003,
+  "weight_decay": 0.0001,
+  "scheduler": "CosineAnnealingLR",
+  "T_max": 30,
+  "num_epochs": 30,
+  "batch_size": 8,
+  "template_config": {
+    "fields": [
+      "material",
+      "fragm",
+      "name"
+    ],
+    "required_fields": [
+      "fragm",
+      "name"
+    ],
+    "optional_fields": [
+      "material"
+    ],
+    "thresholds": {
+      "certain": 0.7,
+      "uncertain": 0.4
+    }
+  }
+}
